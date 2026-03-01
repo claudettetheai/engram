@@ -1,12 +1,12 @@
 {
-  "name": "@total-recall/mcp-server",
+  "name": "@engram/mcp-server",
   "version": "1.0.0",
-  "description": "MCP server for Total Recall Memory — hybrid BM25 + vector search, knowledge graph, session retrieval",
+  "description": "MCP server for Engram — hybrid BM25 + vector search, knowledge graph, session retrieval",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "total-recall-mcp": "dist/index.js"
+    "engram-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

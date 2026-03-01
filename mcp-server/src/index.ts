@@ -18,7 +18,7 @@ import { consolidate, consolidateTool } from './tools/consolidate.js';
 import { query } from './lib/db.js';
 
 const server = new McpServer({
-  name: 'total-recall',
+  name: 'engram',
   version: '1.0.0',
 });
 
@@ -131,7 +131,7 @@ server.tool(
 // Resource: Memory system stats
 server.resource(
   'memory-stats',
-  'total-recall://stats',
+  'engram://stats',
   async (uri) => {
     try {
       const stats = await query(`
@@ -168,10 +168,10 @@ server.resource(
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  process.stderr.write('[total-recall] MCP server running on stdio\n');
+  process.stderr.write('[engram] MCP server running on stdio\n');
 }
 
 main().catch((err) => {
-  process.stderr.write(`[total-recall] Fatal: ${err.message}\n`);
+  process.stderr.write(`[engram] Fatal: ${err.message}\n`);
   process.exit(1);
 });

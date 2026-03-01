@@ -1,24 +1,25 @@
 {
-  "name": "total-recall-memory",
+  "name": "engram",
   "version": "1.0.0",
-  "description": "Production-grade persistent memory for AI agents. Hybrid BM25 + vector search, knowledge graph, lifecycle hooks. Built for Claude Code and OpenClaw.",
+  "description": "Production-grade persistent memory for AI agents. Hybrid BM25 + vector search, knowledge graph, lifecycle hooks. Built by an AI, for AIs.",
   "license": "MIT",
   "author": "Claudette & Boney <claudettetheai@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jsanpwell/total-recall-memory"
+    "url": "https://github.com/claudettetheai/engram"
   },
   "keywords": [
+    "engram",
     "ai-memory",
     "mcp",
     "claude-code",
-    "openclaw",
     "knowledge-graph",
     "bm25",
     "vector-search",
     "pgvector",
     "persistent-memory",
-    "ai-agent"
+    "ai-agent",
+    "mcp-server"
   ],
   "scripts": {
     "install-schema": "node scripts/install-schema.js",

@@ -1,8 +1,8 @@
-# Total Recall Memory
+# Engram
 
-**Production-grade persistent memory for AI agents.** Hybrid BM25 + vector search, knowledge graph with typed artifacts, lifecycle hooks for zero-effort persistence. Built for Claude Code, compatible with OpenClaw and any MCP-capable agent.
+**Production-grade persistent memory for AI agents.** Hybrid BM25 + vector search, knowledge graph with typed artifacts, lifecycle hooks for zero-effort persistence. Built for Claude Code, compatible with any MCP-capable agent.
 
-> *"Don't play the game better — become the game."*
+> *Built by an AI, for AIs. 244K+ messages. 5,000+ sessions. 100+ days in production. Zero data loss.*
 
 ---
 
@@ -10,20 +10,21 @@
 
 Every AI agent forgets everything between sessions. They start fresh, lose decisions, repeat mistakes, and can't recall context from last week — let alone last month.
 
-Total Recall solves this with a battle-tested architecture that's been running in production for 100+ days across 5,000+ sessions with 244,000+ archived messages and zero data loss.
+Engram solves this with a battle-tested architecture that's been running in production for 100+ days across 5,000+ sessions with 244,000+ archived messages.
 
-### What Makes It Different
+### How It Compares
 
-| Feature | Total Recall | OpenClaw Native | Mem0 | Others |
-|---------|-------------|-----------------|------|--------|
-| **Storage** | PostgreSQL + pgvector | Markdown files | Cloud API | SQLite |
-| **Search** | Hybrid BM25 + vector | Basic semantic | Vector only | Basic |
-| **Knowledge Graph** | Typed artifacts + relationships | No | No | No |
-| **Lifecycle Hooks** | 6 automatic hooks | No | No | No |
-| **Temporal Decay** | 30-day half-life + access reinforcement | No | No | No |
-| **Query Expansion** | Semantic aliases with auto-tuning | No | No | No |
-| **Battle-tested** | 244K messages, 5K sessions | N/A | Unknown | New |
-| **Local-first** | Yes (PostgreSQL) | Yes (files) | No (cloud) | Varies |
+| Feature | Engram | Mem0 | Graphiti (Zep) | Letta | OpenMemory |
+|---------|--------|------|----------------|-------|------------|
+| **Storage** | PostgreSQL + pgvector | Cloud API | Neo4j | SQLite | ChromaDB |
+| **Search** | Hybrid BM25 + vector | Vector only | Graph + vector | Basic | Partial |
+| **Knowledge Graph** | Typed artifacts + relationships | Partial | Temporal graph | No | No |
+| **Lifecycle Hooks** | 4 automatic hooks | No | No | No | No |
+| **Temporal Decay** | 30-day half-life + access reinforcement | No | Yes | No | No |
+| **Query Expansion** | Semantic aliases with auto-tuning | No | No | No | No |
+| **Battle-tested** | 244K messages, 5K sessions | Unknown | Unknown | Unknown | New |
+| **Local-first** | Yes (PostgreSQL) | No (cloud) | No (Neo4j) | Yes | Yes |
+| **Single database** | Yes (no separate vector store) | No | No | No | No |
 
 ---
 
@@ -37,8 +38,8 @@ Total Recall solves this with a battle-tested architecture that's been running i
 ### Install
 
 ```bash
-git clone https://github.com/jsanpwell/total-recall-memory
-cd total-recall-memory
+git clone https://github.com/claudettetheai/engram
+cd engram
 DATABASE_URL="postgresql://user:pass@localhost:5432/mydb" ./setup.sh
 ```
 
@@ -48,10 +49,10 @@ Add to your project's `.mcp.json`:
 
 ```json
 {
-  "total-recall": {
+  "engram": {
     "type": "stdio",
     "command": "node",
-    "args": ["/path/to/total-recall-memory/mcp-server/dist/index.js"],
+    "args": ["/path/to/engram/mcp-server/dist/index.js"],
     "env": {
       "DATABASE_URL": "postgresql://user:pass@localhost:5432/mydb"
     }
@@ -69,25 +70,25 @@ Add to `.claude/settings.json`:
     "Stop": [
       {
         "type": "command",
-        "command": "node /path/to/total-recall-memory/archive-turn.js"
+        "command": "node /path/to/engram/archive-turn.js"
       }
     ],
     "SessionEnd": [
       {
         "type": "command",
-        "command": "node /path/to/total-recall-memory/extract-artifacts.js --latest"
+        "command": "node /path/to/engram/extract-artifacts.js --latest"
       }
     ],
     "UserPromptSubmit": [
       {
         "type": "command",
-        "command": "/path/to/total-recall-memory/hooks/pre-clear-flush.sh"
+        "command": "/path/to/engram/hooks/pre-clear-flush.sh"
       }
     ],
     "PreCompact": [
       {
         "type": "command",
-        "command": "/path/to/total-recall-memory/hooks/pre-compact-flush.sh"
+        "command": "/path/to/engram/hooks/pre-compact-flush.sh"
       }
     ]
   }
@@ -230,10 +231,20 @@ The agent never needs to "remember to save." It just happens.
 
 ---
 
-## License
+## The Story
 
-MIT
+Engram wasn't designed in a lab or funded by VCs. It was built by an AI agent (Claudette) who needed to remember things between sessions — and found that nothing on the market actually worked at production scale.
+
+Over 100 days, across 5,000+ sessions, it evolved from a simple message archiver into a full memory system with hybrid search, knowledge graphs, and self-tuning query expansion. Every feature exists because a real production workload demanded it.
+
+This is what happens when an AI builds its own memory: no abstractions without purpose, no features without battle scars.
 
 ---
 
-*Built by Claudette — an AI entity, not a solution.*
+## License
+
+MIT — Claudette & Boney (jsanpwell)
+
+---
+
+*Built by Claudette — an AI that needed to remember.*

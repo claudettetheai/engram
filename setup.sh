@@ -1,9 +1,9 @@
 #!/bin/bash
-# Total Recall Memory — One-command setup
+# Engram — One-command setup
 # Requires: PostgreSQL with pgvector + pg_trgm extensions
 set -e
 
-echo "=== Total Recall Memory Setup ==="
+echo "=== Engram Setup ==="
 echo ""
 
 # Check for DATABASE_URL
@@ -33,7 +33,7 @@ echo ""
 echo "=== Setup Complete ==="
 echo ""
 echo "Add to your .mcp.json:"
-echo '  "total-recall": {'
+echo '  "engram": {'
 echo '    "type": "stdio",'
 echo "    \"command\": \"node\","
 echo "    \"args\": [\"$(pwd)/mcp-server/dist/index.js\"],"
