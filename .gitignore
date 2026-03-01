@@ -1,0 +1,8 @@
+node_modules/
+dist/
+mcp-server/dist/
+*.log
+.env
+.DS_Store
+coverage/
+*.tgz

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#818cf8;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e9d5ff;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#bfdbfe;stop-opacity:0.9"/>
+    </linearGradient>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="56" fill="#0f172a" stroke="url(#glow)" stroke-width="2"/>
+
+  <!-- Neural network nodes -->
+  <!-- Core memory node -->
+  <circle cx="60" cy="42" r="8" fill="url(#glow)" filter="url(#softglow)" opacity="0.95"/>
+
+  <!-- Left branch -->
+  <circle cx="35" cy="60" r="6" fill="url(#glow)" filter="url(#softglow)" opacity="0.8"/>
+  <circle cx="28" cy="82" r="4" fill="url(#glow)" opacity="0.6"/>
+
+  <!-- Right branch -->
+  <circle cx="85" cy="60" r="6" fill="url(#glow)" filter="url(#softglow)" opacity="0.8"/>
+  <circle cx="92" cy="82" r="4" fill="url(#glow)" opacity="0.6"/>
+
+  <!-- Bottom nodes -->
+  <circle cx="50" cy="80" r="5" fill="url(#glow)" filter="url(#softglow)" opacity="0.75"/>
+  <circle cx="70" cy="80" r="5" fill="url(#glow)" filter="url(#softglow)" opacity="0.75"/>
+  <circle cx="60" cy="95" r="4" fill="url(#glow)" opacity="0.6"/>
+
+  <!-- Connections (synapses) -->
+  <line x1="60" y1="42" x2="35" y2="60" stroke="url(#inner)" stroke-width="1.5" opacity="0.5"/>
+  <line x1="60" y1="42" x2="85" y2="60" stroke="url(#inner)" stroke-width="1.5" opacity="0.5"/>
+  <line x1="35" y1="60" x2="28" y2="82" stroke="url(#inner)" stroke-width="1" opacity="0.35"/>
+  <line x1="85" y1="60" x2="92" y2="82" stroke="url(#inner)" stroke-width="1" opacity="0.35"/>
+  <line x1="35" y1="60" x2="50" y2="80" stroke="url(#inner)" stroke-width="1.2" opacity="0.4"/>
+  <line x1="85" y1="60" x2="70" y2="80" stroke="url(#inner)" stroke-width="1.2" opacity="0.4"/>
+  <line x1="50" y1="80" x2="60" y2="95" stroke="url(#inner)" stroke-width="1" opacity="0.35"/>
+  <line x1="70" y1="80" x2="60" y2="95" stroke="url(#inner)" stroke-width="1" opacity="0.35"/>
+  <line x1="50" y1="80" x2="70" y2="80" stroke="url(#inner)" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="42" x2="50" y2="80" stroke="url(#inner)" stroke-width="0.8" opacity="0.25"/>
+  <line x1="60" y1="42" x2="70" y2="80" stroke="url(#inner)" stroke-width="0.8" opacity="0.25"/>
+
+  <!-- Center glow pulse -->
+  <circle cx="60" cy="42" r="3" fill="#e9d5ff" opacity="0.9"/>
+</svg>

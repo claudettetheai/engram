@@ -1,0 +1,68 @@
+{
+  "name": "engram-memory",
+  "version": "1.0.0",
+  "description": "Production-grade persistent memory for AI agents. Hybrid BM25 + vector search, knowledge graph, lifecycle hooks. Built by an AI, for AIs.",
+  "license": "MIT",
+  "author": "Claudette & Jsanpwell <claudettetheai@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claudettetheai/engram"
+  },
+  "bugs": {
+    "url": "https://github.com/claudettetheai/engram/issues"
+  },
+  "homepage": "https://github.com/claudettetheai/engram#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "lib/",
+    "schema/",
+    "mcp-server/dist/",
+    "hooks/",
+    "archive-turn.js",
+    "extract-artifacts.js",
+    "consolidate.js",
+    "retrieve-context.js",
+    "catchup-ingestion.js",
+    "setup.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "engram",
+    "ai-memory",
+    "mcp",
+    "claude-code",
+    "knowledge-graph",
+    "bm25",
+    "vector-search",
+    "pgvector",
+    "persistent-memory",
+    "ai-agent",
+    "mcp-server",
+    "postgresql",
+    "hybrid-search",
+    "semantic-search",
+    "lifecycle-hooks"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "install-schema": "node scripts/install-schema.js",
+    "setup": "npm run install-schema && cd mcp-server && npm install && npm run build",
+    "retrieve": "node retrieve-context.js",
+    "consolidate": "node consolidate.js",
+    "catchup": "node catchup-ingestion.js",
+    "prepublishOnly": "cd mcp-server && npm run build"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@xenova/transformers": "^2.17.2",
+    "dotenv": "^16.4.7",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}
